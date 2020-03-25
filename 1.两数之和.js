@@ -13,15 +13,20 @@
 var twoSum = function(nums, target) {
   let comp = {}
 
-  for (let i = 0; i < nums.length; i++) {
-    comp[nums[i]] = i
-  }
+  // for (let i = 0; i < nums.length; i++) {
+  //   comp[nums[i]] = i
+  // }
 
   for (let i = 0; i < nums.length; i++) {
-    if (comp[target - nums[i]] && i != comp[target - nums[i]]) {
-      return comp[target - nums[i]] > i
-        ? [i, comp[target - nums[i]]]
-        : [comp[target - nums[i]], i]
+    // if (comp[target - nums[i]] && i != comp[target - nums[i]]) {
+    //   return comp[target - nums[i]] > i
+    //     ? [i, comp[target - nums[i]]]
+    //     : [comp[target - nums[i]], i]
+    // }
+    if (nums[i] in comp) {
+      return [comp[nums[i]], i]
+    } else {
+      comp[target - nums[i]] = i
     }
   }
 }
