@@ -34,16 +34,19 @@ class LinkNodeList {
   remove(index) {
     let prev = null,
       cur = null,
-      length = 0
+      curIndex = 0
 
-    cur = head
+    cur = this.head
 
-    while (length !== index) {
-      length++
+    while (curIndex < index && curIndex !== index) {
+      curIndex++
+      prev = cur
+      cur = cur.next
     }
+    prev.next = cur.next
   }
 
-  insert() {}
+  insert(index) {}
 
   log() {
     let [cur, res] = [this.head, []]
@@ -61,5 +64,8 @@ class LinkNodeList {
 let linkNode = new LinkNodeList()
 linkNode.append('Hi')
 linkNode.append('Sara')
+linkNode.append('你好')
 linkNode.append('nice to meet you !')
+linkNode.log()
+linkNode.remove(2)
 linkNode.log()
