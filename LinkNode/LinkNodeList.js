@@ -47,10 +47,33 @@ class LinkNodeList {
       cur = cur.next
     }
 
+    this.length--
     prev.next = cur.next
   }
 
-  insert(index) {}
+  insert(index, element) {
+    let cur = this.head,
+      node = new Node(element),
+      prev = null,
+      curIndex = 0
+
+    if (index === 0) {
+      node.next = this.head
+      this.head = node
+      this.length++
+      return
+    }
+
+    while (curIndex <= this.length && curIndex !== index) {
+      curIndex++
+      prev = cur
+      cur = cur.next
+    }
+
+    prev.next = node
+    node.next = cur
+    this.length++
+  }
 
   log() {
     let [cur, res] = [this.head, []]
@@ -69,10 +92,10 @@ class LinkNodeList {
 let linkNode = new LinkNodeList()
 linkNode.append('Hi')
 linkNode.append('Sara')
-linkNode.append('你好')
 linkNode.append('nice to meet you !')
 linkNode.log()
 // linkNode.remove(2)
 // linkNode.log()
-linkNode.remove(0)
+// linkNode.remove(0)
+linkNode.insert(1, '插队')
 linkNode.log()
