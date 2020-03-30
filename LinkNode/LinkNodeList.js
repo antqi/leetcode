@@ -38,7 +38,7 @@ class LinkNodeList {
 
     if (index === 0) {
       this.head = this.head.next
-      return
+      return element
     }
 
     while (cur.next && curIndex !== index) {
@@ -49,6 +49,7 @@ class LinkNodeList {
 
     this.length--
     prev.next = cur.next
+    return element
   }
 
   insert(index, element) {
@@ -61,7 +62,7 @@ class LinkNodeList {
       node.next = this.head
       this.head = node
       this.length++
-      return
+      return element
     }
 
     while (curIndex <= this.length && curIndex !== index) {
@@ -73,6 +74,7 @@ class LinkNodeList {
     prev.next = node
     node.next = cur
     this.length++
+    return element
   }
 
   log() {
