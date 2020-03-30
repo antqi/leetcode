@@ -33,16 +33,20 @@ class LinkNodeList {
 
   remove(index) {
     let prev = null,
-      cur = null,
+      cur = this.head,
       curIndex = 0
 
-    cur = this.head
+    if (index === 0) {
+      this.head = this.head.next
+      return
+    }
 
-    while (curIndex < index && curIndex !== index) {
+    while (cur.next && curIndex !== index) {
       curIndex++
       prev = cur
       cur = cur.next
     }
+
     prev.next = cur.next
   }
 
@@ -55,6 +59,7 @@ class LinkNodeList {
       res.push(cur.element)
       cur = cur.next
     }
+
     res.push(cur.element)
     console.log(res.join(' -> '))
     // return res.join(' -> ')
@@ -67,5 +72,7 @@ linkNode.append('Sara')
 linkNode.append('你好')
 linkNode.append('nice to meet you !')
 linkNode.log()
-linkNode.remove(2)
+// linkNode.remove(2)
+// linkNode.log()
+linkNode.remove(0)
 linkNode.log()
