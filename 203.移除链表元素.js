@@ -18,6 +18,7 @@
  * @return {ListNode}
  */
 
+//将任一数值 x 与 0 执行按位与操作，其结果都为 0。将任一数值 x 与 -1 执行按位与操作，其结果都为 x。
 var removeElements = function(head, val) {
   let node = new ListNode(null),
     prev = node,
